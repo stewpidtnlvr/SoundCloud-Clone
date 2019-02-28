@@ -1,0 +1,70 @@
+{
+  "name": "SoundCloud-Clone",
+  "version": "1.0.0",
+  "description": "SoundCloud Clone deployed to heroku",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henron1/SoundCloud-Clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "engines": {"node": ">=11.6"},
+  "bugs": {
+    "url": "https://github.com/henron1/SoundCloud-Clone/issues"
+  },
+  "homepage": "https://github.com/henron1/SoundCloud-Clone#readme",
+  "scripts": {
+    "build": "run-s build:css build:js",
+    "build:css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "build:js": "cross-env NODE_PATH=. react-scripts build",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build",
+    "server": "cross-env NODE_ENV=development nodemon -w 'server/**/*.*' server/main.js",
+    "start": "run-p start:css start:js",
+    "start:css": "npm run build:css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "start:js": "cross-env NODE_PATH=. react-scripts start",
+    "test": "cross-env NODE_PATH=. react-scripts test --env=jsdom",
+    "test:ci": "cross-env CI=true NODE_PATH=. react-scripts test --env=jsdom",
+    "test:server": "ava server/spec.js --verbose",
+    "version": "npm run changelog && git add CHANGELOG.md"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "compression": "^1.7.3",
+    "express": "^4.16.4",
+    "helmet": "^3.15.1",
+    "history": "^4.7.2",
+    "immutable": "^4.0.0-rc.12",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-redux": "^6.0.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.1.5",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.2",
+    "rxjs": "^6.4.0",
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "ava": "^1.2.1",
+    "conventional-changelog-cli": "^2.0.12",
+    "cross-env": "^5.2.0",
+    "enzyme": "^3.9.0",
+    "minx": "^0.4.14",
+    "morgan": "^1.9.1",
+    "node-sass-chokidar": "^1.3.4",
+    "nodemon": "^1.18.10",
+    "npm-run-all": "^4.1.5",
+    "react-test-renderer": "^16.8.3",
+    "sinon": "^7.2.4",
+    "superagent": "^4.1.0",
+    "supertest": "^3.4.2"
+  }
+}
