@@ -8,7 +8,7 @@ import history from './core/history';
 import configureStore from './core/store';
 import mediaQueryRules from './views/media';
 import App from './views/app';
-import registerServiceWorker from './register-service-worker';
+// import registerServiceWorker from './register-service-worker';
 
 import './views/styles/styles.css';
 
@@ -43,5 +43,5 @@ store.dispatch(appActions.initApp({
 }));
 
 
-registerServiceWorker();
+// registerServiceWorker();
 render(App);
